@@ -38,13 +38,14 @@ namespace Indexes {
     const float maxAngle = 360.0f;
     const float eps = 0.00001f;
     const float pi = 3.14159265f;
-    const int windowWidth = 360;
-    const int windowHeight = 360;
+    const int windowWidth = 720;
+    const int windowHeight = 720;
     bool GLfloatComp(GLfloat a, GLfloat b);
 }
 
 namespace MousePos {
     extern float oldX, oldY, oldZ,uX,uZ,uY;
+    extern float sq, sqOld;
     extern float mouseAngle;
     extern float sphereRad;
     extern float times;

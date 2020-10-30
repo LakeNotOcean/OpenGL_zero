@@ -77,23 +77,8 @@ void drawScene(void)
 
     glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, figureColor);
 
-	// Define specular color and shininess
-    GLfloat specColor[] = {1.0, 1.0, 1.0, 1.0};
-    GLfloat shininess[] = {100.0};
+	
 
-	// Note that the specular color and shininess can stay constant
-    glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, specColor);
-    glMaterialfv(GL_FRONT_AND_BACK, GL_SHININESS, shininess);
-  
-    // Set light properties
-
-    // Light color (RGBA)
-    GLfloat Lt0diff[] = {1.0,1.0,1.0,1.0};
-    // Light position
-	GLfloat Lt0pos[] = {lightHorPos, lightVertPos, 5.0f, 1.0f};
-
-    glLightfv(GL_LIGHT0, GL_DIFFUSE, Lt0diff);
-    glLightfv(GL_LIGHT0, GL_POSITION, Lt0pos);
     glPushMatrix();
     glRotatef(angle, 0.0f, 1.0f, 0.0f);
     glRotatef(mouseAngle,uX,uY,uZ);
@@ -135,6 +120,24 @@ void reshapeFunc(int w, int h)
     gluLookAt(0.0, 0.0, 6.0,
         0.0, 0.0, 0.0,
         0.0, 1.0, 0.0);
+    // Define specular color and shininess
+    GLfloat specColor[] = { 1.0, 1.0, 1.0, 1.0 };
+    GLfloat shininess[] = { 100.0 };
+
+    // Note that the specular color and shininess can stay constant
+    glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, specColor);
+    glMaterialfv(GL_FRONT_AND_BACK, GL_SHININESS, shininess);
+
+    // Set light properties
+
+    // Light color (RGBA)
+    GLfloat Lt0diff[] = { 1.0,1.0,1.0,1.0 };
+    // Light position
+    GLfloat Lt0pos[] = { lightHorPos, lightVertPos, 5.0f, 1.0f };
+
+    glLightfv(GL_LIGHT0, GL_DIFFUSE, Lt0diff);
+    glLightfv(GL_LIGHT0, GL_POSITION, Lt0pos);
+
     glGetFloatv(GL_MODELVIEW_MATRIX, CT);
 
 }

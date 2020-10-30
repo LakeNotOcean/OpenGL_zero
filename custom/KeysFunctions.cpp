@@ -73,8 +73,8 @@ void mouseFunc(int button, int state, int x, int y)
         {
             float newX = x - sphereRad;
             float newY = sphereRad-y;
-            float sq = sphereRad * sphereRad - newX * newX - newY * newY;
-            if (sq < 0.0)
+            sq = sphereRad * sphereRad - newX * newX - newY * newY;
+            if (sq < 0.0f || sqOld<0.0f)
                 return glutPostRedisplay();
             float newZ = sqrt(sq);
 
@@ -96,9 +96,14 @@ void mouseFunc(int button, int state, int x, int y)
         }
         else if (state==GLUT_DOWN)
         {
-            oldX = x-sphereRad;
-            oldY = sphereRad-y;
-            oldZ = sqrt(sphereRad*sphereRad-oldX*oldX-oldY*oldY);
+            float prevOldX = x - sphereRad;
+            float prevOldY = sphereRad-y;
+            sqOld = sphereRad * sphereRad - prevOldX * prevOldX - prevOldY * prevOldY;
+            if (sqOld < 0.0f)
+                return glutPostRedisplay();
+            oldX = prevOldX;
+            oldY = prevOldY;
+            oldZ = sqrt(sqOld);
         }
     if (state==GLUT_UP && button == 3)
     {

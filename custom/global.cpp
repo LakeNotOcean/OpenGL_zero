@@ -36,6 +36,8 @@ float MousePos::oldZ = 0.0f;
 float MousePos::uX = 0.0f;
 float MousePos::uY = 0.0f;
 float MousePos::uZ = 0.0f;
-float MousePos::sphereRad = std::max(Indexes::windowHeight/2,Indexes::windowWidth/2);
+float MousePos::sphereRad = std::min(Indexes::windowHeight/2,Indexes::windowWidth/2);
+float MousePos::sq = 0.0f;
+float MousePos::sqOld = 0.0f;
 float MousePos::times = 1.0f;
 
